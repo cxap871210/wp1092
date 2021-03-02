@@ -1,37 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link href="style.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-        <title>Music Player</title>
-    </head>
-    <body>
-        
-        <img class="animated jello" id='whale' src= "whale.jpg" width="500px">
-        <p id='name'>♫ The whale ♫</p>
+<head>
+	<meta charset="UTF-8">
+	<title>Music PLayer CSS + HTML</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
-        
-        <div id='control'>
-            <div id='div2'>
-                <img src= "back.png" width="100px">
-            </div>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">    
 
-            <div id='div3'>
-                <img src= "play1.png" width="100px">
-            </div>
+</head>
+<body>
+	
+	<section class="container">
+		
+		<div id="player">
+			
+			<div class="caratula">
+				<img src="whale.jpg">
+			</div>
 
-            <div id='div4'>
-                <img src= "front.png" width="100px">
-            </div>
-        </div>
+			<div class="time">
+				<div class="progress"></div>
+			</div>
 
-        <div id='div1'>
-            <p>volume</p>
-            <input type="range" min="0" max="100" step="1" value="50">
-        </div>
-        
-    
-        
-    </body>
+			<div class="info">
+					<div class="love">
+						<div class="icon-heart"></div>
+						<div class="icon-star-empty"></div>
+					</div>
+				<div class="elapsed">2:40</div>
+				<h2>The Whale</h2>
+				<h3>Adam Smith</h3>
+			</div>
+
+			<div class="controls">
+				<ul>
+					<li><div class="icon-backward btn"></div></li>
+					<li><div class="icon-pause btn"></div></li>
+					<li class="play"><div class="icon-play btn"></div></li>
+					<li><div class="icon-stop btn"></div></li>
+					<li><div class="icon-forward btn"></div></li>
+				</ul>
+			</div>
+
+		</div>
+
+
+	</section>
+
+
+</body>
 </html>
