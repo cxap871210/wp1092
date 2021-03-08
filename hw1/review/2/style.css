@@ -1,0 +1,305 @@
+html,
+body {
+    background-size: contain;
+    /* width: 100%;
+    height: 100%; */
+}
+
+body {
+    background:
+        linear-gradient(0.40turn, #3f87a6, #ebf8e1, #f69d3c);
+    background-repeat:
+        no-repeat;
+    background-position:
+        right;
+    background-attachment:
+        fixed;
+    background-size:
+        300% 300%;
+    animation:
+        gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+nav {
+    width: 20%;
+    /*寬度占版面20%*/
+    height: 100px;
+    /*高度100px*/
+    margin: 0 auto;
+    /*margin置中*/
+    font-size: 50px;
+    /*字體大小50px*/
+    font-style: oblique;
+    /*字體樣式傾斜體*/
+    font-weight: bolder;
+    /*字體粗細:粗*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*字形*/
+    color: rgb(30, 83, 228);
+    /*文字顏色*/
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /*所有元素共同水平置中*/
+    align-items: center;
+}
+
+div.title:hover {
+    transition: 0.5s;
+    color: cyan;
+    position: relative;
+    top: 1px;
+    left: 1px;
+}
+
+
+.album-cover {
+    width: 30%;
+    height: 350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fa-caret-left,
+.fa-caret-right {
+    color: rgb(53, 168, 202);
+}
+
+.fa-caret-left:hover,
+.fa-caret-right:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
+
+img {
+    border-radius: 100px;
+    opacity: 1;
+}
+
+img:hover {
+    border-radius: 50%;
+    transform: scale(1.05);
+    transition: 1s;
+    opacity: 0.8;
+    box-shadow: 10px 10px 5px pink;
+}
+
+.lyrics {
+    border: 2px dashed rgb(130, 203, 231);
+    border-radius: 20px;
+    width: 15%;
+    height: 200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bolder;
+    font-style: oblique;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(162, 66, 218);
+    overflow: auto;
+}
+
+.singer-link {
+    height: 130px;
+    width: 15%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name {
+    font-weight: 550;
+    font-size: 15px;
+    padding-top: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.fa-facebook {
+    color: rgb(24, 119, 242);
+}
+
+.fa-facebook:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    -webkit-filter: brightness(1.2);
+}
+
+.fa-youtube {
+    color: #ff0000;
+}
+
+.fa-youtube:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    -webkit-filter: brightness(1.2);
+}
+
+.fa-instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: bright 2s infinite;
+}
+
+.fa-instagram:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    -webkit-filter: brightness(1.2);
+}
+
+.song {
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    background: radial-gradient(circle at 30% 107%, rgba(244, 37, 243, 1) 1.4%, rgba(244, 87, 1, 1) 36.2%, rgba(255, 204, 37, 1) 72.2%, rgba(20, 196, 6, 1) 113%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 15%;
+    margin: 0 auto;
+
+}
+
+.song:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.song_name,
+.singer_name {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.song_name {
+    font-size: 35px;
+}
+
+.player {
+    color: rgb(53, 49, 49);
+    height: 150px;
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start {
+    padding: 15px 15px 15px 15px;
+    border-radius: 60%;
+    border: 2px solid gray;
+}
+
+.start:active .fa-play:before {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+    content: "\f04c";
+}
+
+.fa-fast-backward:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
+
+.fa-step-backward:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
+
+.fa-step-forward:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
+
+.fa-fast-forward:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
+
+.time {
+    margin: 0 auto;
+    width: 30%;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#progressbar {
+    margin: 0 auto;
+    width: 30%;
+    background-color: rgb(229, 231, 233);
+    border-radius: 15px;
+    padding: 4px;
+}
+
+#progressbar>div {
+    background-color: rgb(51, 255, 246);
+    width: 40%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.behavior {
+    color: rgb(53, 49, 49);
+    height: 150px;
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-plus:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+    cursor: cell;
+}
+
+.fa-heart:hover {
+    color: red;
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
+
+.fa-share:hover {
+    opacity: 0.5;
+    -webkit-filter: brightness(1.5);
+    transition: 1s;
+}
