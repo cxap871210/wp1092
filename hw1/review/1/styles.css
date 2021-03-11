@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Gayathri&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Gayathri", sans-serif;
+    letter-spacing: -0.5px;
+}
+
+body {
+    background: white;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    opacity: 0.9;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+button {
+    border: none;
+    border-radius: 100%;
+    padding: 32px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 2.5% 10px 2.5%;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height: 100%;
+    background-color: white;
+    outline: none;
+}
+
+.audio-player-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border: none;
+    padding: 5px;
+    text-align: center;
+}
+
+.slide-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border: none;
+    padding: 5px;
+    text-align: center;
+}
+  
+#range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #cfcfcf;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+#range-slider:hover {
+    opacity: 1;
+    background: #bdbdbd;
+}
+
+#range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background:black;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+#back-icon {
+    margin: 20px 2.5% 10px 2.5%;
+    background-image: url(./source/back.png);
+    background-size: contain;
+}
+#play-icon {
+    margin: 20px 2.5% 10px 2.5%;
+    background-image: url(./source/play.png);
+    background-size: contain;
+}
+#next-icon {
+    margin: 20px 2.5% 10px 2.5%;
+    background-image: url(./source/next.png);
+    background-size: contain;
+}
+#back-icon:hover {
+    background-color: rgb(200, 200, 200);
+}
+#play-icon:hover {
+    background-color: rgb(160, 160, 160);
+}
+#next-icon:hover {
+    background-color: rgb(200, 200, 200);
+}
+#back-icon:active {
+    background-color: white;
+    box-shadow: 0 5px rgb(200, 200, 200);
+    transform: translateY(4px);
+}
+#play-icon:active {
+    background-color: white;
+    box-shadow: 0 5px rgb(160, 160, 160);
+    transform: translateY(4px);
+}
+#next-icon:active {
+    background-color: white;
+    box-shadow: 0 5px rgb(200, 200, 200);
+    transform: translateY(4px);
+}
