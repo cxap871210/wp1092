@@ -9,6 +9,7 @@ function IsTyping(){
 
 let c_num = 1 ;
 function leaveComment(){
+    let com = document.getElementById("comment-input").value
     document.getElementById("comment-input").value = "";
     document.getElementById("comment-button").style.background = "#cccccc";
 
@@ -18,7 +19,7 @@ function leaveComment(){
     document.body.appendChild(divClone); 
     
     var ob = document.getElementById("comment" + c_num);
-    ob.getElementsByClassName('comment-text').value = 'afaegae' ;
+    ob.getElementsByClassName('comment-text').innerHTML = com;
     
     c_num ++ ;
     document.getElementById("comment-num").innerHTML = c_num + "則留言";
