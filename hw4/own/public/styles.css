@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+::placeholder { /* CSS 3 標準 */
+
+    color: black;
+    opacity: 0.4;
+  
+  }
