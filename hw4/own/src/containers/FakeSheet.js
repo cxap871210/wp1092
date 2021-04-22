@@ -10,8 +10,8 @@ class FakeSheet extends Component {
                        edit_x:'',
                        edit_y:'',
                        grid:{},
-                       X : 5,
-                       Y : 10 };
+                       X : 26,
+                       Y : 100 };
     
         this.prevent = false ;
         this.timer = 0 ;

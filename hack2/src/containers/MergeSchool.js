@@ -305,7 +305,7 @@ class MergeSchool extends Component {
     render() {
         return (
             <>      
-                <Header step  = {this.state.step} qs_ranking = {this.state.qs_ranking} ini_fun = {this.initializeBoard()} />
+                <Header step  = {this.state.step} qs_ranking = {this.state.qs_ranking} ini_fun = {this.initializeBoard} />
                 <Board2048 className="wrapper" board={this.state.board}/>
                 <div className="btn-groups">
                     <div className="btn-useful" id="badend-btn" onClick={this.setBadEnd}>BadEnd</div>
