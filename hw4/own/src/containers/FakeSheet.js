@@ -122,7 +122,6 @@ class FakeSheet extends Component {
     {
         // console.log('unblur') ;
     
-
         setTimeout(function() {
             this.setState({selected_x:'', selected_y : ''}) ;    
           }.bind(this), 120);
