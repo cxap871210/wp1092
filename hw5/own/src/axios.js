@@ -3,12 +3,10 @@ import axios from 'axios'
 const instance = axios.create({ baseURL: 'http://localhost:4000/api/guess' })
 
 const startGame = async () => {
-
-    const {
-      data: { msg }
-    } = await instance.post('/start')
-    return msg
-    
+  const {
+    data: { msg }
+  } = await instance.post('/start')
+  return msg  
 }
 
 const guess = async (number) => {
@@ -24,8 +22,20 @@ const guess = async (number) => {
   }
   catch(error)
   {
-    let msg = number.toString() + ' is not a valid number (1 - 100)'
-    return msg
+    try
+    {
+      if(error.response.status === 400)
+      {
+        let msg = number.toString() + ' is not a valid number (1 - 100)'
+        return msg
+      } 
+    }
+    catch
+    {
+      let msg = 'XX'
+      return msg
+    }
+    
   }
   
 }

@@ -7,15 +7,25 @@ function App() {
   const [hasWon, setHasWon] = useState(false)
   const [number, setNumber] = useState('')
   const [status, setStatus] = useState('')
-
+  const [ERR, setERR] = useState('')
   
+
 
   const startMenu = (
     <div>
       <button
         onClick={async () => {
-          await startGame()
-          setHasStarted(true)
+          try
+          {
+            await startGame()
+            setHasStarted(true)
+            setERR('')
+          }
+          catch(error)
+          {
+            setERR(error.toString())
+          }
+          
         }}
       >
         start game
@@ -28,10 +38,19 @@ function App() {
       <p>you won! the number was {number}.</p>
       <button
         onClick={async () => {
-          await restart()
-          setHasWon(false)
-          setStatus('')
-          setNumber('')
+          try
+          {
+            await restart()
+            setHasWon(false)
+            setStatus('')
+            setNumber('')
+            setERR('')
+          }
+          catch(error)
+          {
+            setERR(error.toString())
+          }
+          
         }}
       >
         restart
@@ -43,16 +62,25 @@ function App() {
   // 1. use async/await to call guess(number) in Axios
   // 2. Process the response from server to set the proper state values
   const handleGuess = () => {
-    // console.log('click guess')
+    
     let re_msg = guess(number)
     re_msg.then(function(value){
-      setStatus(value)
-      
-      if(value === 'Equal!')
+      if(value !== 'XX')
       {
-        setHasWon(true)
+        setERR('')
+        setStatus(value)
+        if(value === 'Equal!')
+        {
+          setHasWon(true)
+        }
       }
-    })    
+      else
+      {
+        setERR('Error: Network Error')
+      }
+      
+    })
+    
   }
 
   
@@ -80,7 +108,20 @@ function App() {
     </div>
   )
 
-  return <div className="App">{hasStarted ? game : startMenu}</div>
+  let err_css = {
+    position: 'fixed',
+    left: '0',
+    bottom: '0',
+    width: '100%',
+    backgroundColor: 'red',
+    color: 'white',
+    textAlign: 'center',
+  }
+
+  return <div className="App">
+          {hasStarted ? game : startMenu}
+          <p style = {err_css}>{ERR}</p>
+         </div>
 }
 
 export default App
