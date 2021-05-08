@@ -1,6 +1,14 @@
 import express from 'express'
 import getNumber from '../core/getNumber'
 var fs = require('fs')
+const Path = require('path');
+   
+fs.mkdir(Path.join(__dirname, '../log'), (err) => {
+    if (err) {
+        return console.error(err);
+    }
+    // console.log('Directory created successfully!');
+});
 
 let today = new Date();
 let date = today.getFullYear()+'-' + (today.getMonth()+1) + '-' + today.getDate() + '-' + today.getHours() + "-" + today.getMinutes();
