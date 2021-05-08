@@ -11,7 +11,7 @@ const getNumber = (forceRestart = false) => {
   if (forceRestart === true | typeof(number) === "undefined")
   {
     number = getRandom(0,100)
-    console.log('start', number)
+    // console.log('start', number)
   }
   // console.log('getNumber:', number)
   return number
