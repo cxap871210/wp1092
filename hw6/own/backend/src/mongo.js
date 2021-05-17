@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from "dotenv";
+dotenv.config();
 
 function connectMongo() {
-  mongoose.connect('mongodb+srv://cxap871210:fuck@cluster0.caw96.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+  mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
