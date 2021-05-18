@@ -20,46 +20,32 @@ const tidyUpData = (data, result) => {
   //     ...
   //   ]
   // }
-  // coding here ...
-  ///////////
-    // const findAll = async () => {
-    //   const checkData = await ScoreCard.find()
-      
-    //   console.log(checkData)
-    //   checkData.sort((a, b) => (a.name > b.name) ? 1 : -1)
-    //   console.log(checkData)
-
-    // }
-    // findAll()
-    // console.log(['joe', 'jane', 'mary'].includes('jane')); //true
-
-    let G = ['a', 'b']
-    var myObj = {};
-    myObj.G = G
-    console.log(myObj.G)
-    ///////////////
-
-
-  const findAll = async () => {
-    const checkData = await Station.find()
-    checkData.sort((a, b) => (a.station_id > b.station_id) ? 1 : -1)
+  
+  
+    data.sort((a, b) => (a.station_id > b.station_id) ? 1 : -1)
     
     let letter = []
-    for(let index = 0 ; index < checkData.length ; index ++)
+    for(let index = 0 ; index < data.length ; index ++)
     {
-      if(letter.includes(checkData[index].station_id[0] === false))
+      if(letter.includes(data[index].station_id[0] === false))
       {
-        letter.push(checkData[index].station_id[0])
+        letter.push(data[index].station_id[0])
       }
     }
 
     for(let index = 0 ; index < letter.length ; index++)
     {
-      let temp = {}
-      
+      let temp = []
+      for(let j = 0 ; j < data.length ; j++)
+      {
+        if (data[j].station_id[0] === letter[index])
+        {
+          temp.push(data[j])
+        }
+      }
+      result[letter[index]] = temp
     }
 
-  }
 
   return result
 }
@@ -122,16 +108,22 @@ const GetStations = async (req, res) => {
     // fetch data from mongo
     // coding here ...
 
+    const findAll = async () => {
+      data = await Station.find()
+    }
+
     result = tidyUpData(data, result)
 
     if (Object.keys(result).length) {
       // return correct response here ...
+      res.status(200).send({ message: 'success', data: result })
     }
     else {
       throw new Error('Something Wrong !')
     }
   } catch (err) {
     console.error(err.name + ' ' + err.message)
+    res.status(403).send({ message: 'error', data: [] })
     // return correct response here ...
   }
 }
