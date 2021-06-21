@@ -4,8 +4,7 @@ const WebSocket = require('ws');
 const express = require('express');
 const path = require('path');
 const uuid = require('uuid');
-require('dotenv-defaults').config();
-require('events').EventEmitter.defaultMaxListeners = Infinity;
+
 const mongo = require('./mongo');
 
 const app = express();
@@ -94,7 +93,7 @@ wss.on('connection', function connection(client) {
     message = JSON.parse(message);
 
     const { type } = message;
-    //console.log(type);
+
     switch (type) {
       // on open chat box
       case 'CHAT': {
@@ -109,15 +108,13 @@ wss.on('connection', function connection(client) {
         const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
 
         // if client was in a chat box, remove that.
-        if (chatBoxes[client.box])
-          // user was in another chat box
-          chatBoxes[client.box].delete(client);
+        
 
         // use set to avoid duplicates
         client.box = chatBoxName;
         if (!chatBoxes[chatBoxName]) chatBoxes[chatBoxName] = new Set(); // make new record for chatbox
         chatBoxes[chatBoxName].add(client); // add this open connection into chat box
-   
+
         client.sendEvent({
           type: 'CHAT',
           data: {
@@ -129,79 +126,6 @@ wss.on('connection', function connection(client) {
         });
 
         break;
-      }
-
-      case 'SWITCH': {
-        const {
-          data: { name, to },
-        } = message;
-
-        const chatBoxName = makeName(name, to);
-
-        const sender = await validateUser(name);
-        const receiver = await validateUser(to);
-        const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);
-        //console.log(chatBoxes[chatBoxName]);
-        if (chatBoxes[client.box])
-          // user was in another chat box
-          chatBoxes[client.box].delete(client);
-
-        client.box = chatBoxName;
-        chatBoxes[chatBoxName].add(client);
-        client.sendEvent({
-          type: 'CHAT',
-          data: {
-            messages: chatBox.messages.map(({ sender: { name }, body }) => ({
-              name,
-              body,
-            })),
-          },
-        });
-
-        break;
-      }
-
-      case 'REMOVE': {
-        const {
-          data: { name, to, newactive },
-        } = message;
-
-        const chatBoxName = makeName(name, to);
-        if (chatBoxName === client.box) {
-          chatBoxes[client.box].delete(client);
-        }
-        else {
-          chatBoxes[chatBoxName].forEach((c) => {
-            if (c.id === client.id) {
-              chatBoxes[chatBoxName].delete(c);
-            }
-          });
-        }
-
-        if (newactive !== "") {
-          //console.log(newactive);
-          const newchatBoxName = makeName(name, newactive);
-          const sender = await validateUser(name);
-          const receiver = await validateUser(newactive);
-          const chatBox = await validateChatBox(newchatBoxName, [sender, receiver]);
-          client.sendEvent({
-            type: 'CHAT',
-            data: {
-              messages: chatBox.messages.map(({ sender: { name }, body }) => ({
-                name,
-                body,
-              })),
-            },
-          });
-        }
-        break;
-      }
-
-      case 'CLEAR_DB': {
-          await UserModel.deleteMany({});
-          await ChatBoxModel.deleteMany({});
-          await MessageModel.deleteMany({});
-          break;
       }
 
       case 'MESSAGE': {
@@ -210,6 +134,7 @@ wss.on('connection', function connection(client) {
         } = message;
 
         const chatBoxName = makeName(name, to);
+
         const sender = await validateUser(name);
         const receiver = await validateUser(to);
         const chatBox = await validateChatBox(chatBoxName, [sender, receiver]);

@@ -1,18 +1,19 @@
-const mongoose = require('mongoose');
+//import dotenv from "dotenv-defaults";
+require("dotenv").config({ path: "../.env" });
 
-// i use mongodb://localhost:27017/cardmongo for MONGO_URL
+const mongoose = require("mongoose");
 
 function connectMongo() {
-  mongoose.connect('mongodb://localhost:27017/testmongo', {
+  mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
   const db = mongoose.connection;
 
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function () {
-    console.log('Mongo database connected!');
+  db.on("error", console.error.bind(console, "connection error:"));
+  db.once("open", function () {
+    console.log("Mongo database connected!");
   });
 }
 
